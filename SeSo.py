@@ -10,23 +10,30 @@ class SearchSort:
           optional parameters
     '''
 
-    def __init__(self, array = None):
+    def __init__(self, array = None, targetnum = None):
 
         self.array = array
+        self.targetnum = targetnum
 
-    def sort_array(self, array=None):
+    def quick_sort_array(self, array=None):
 
         ''' private class method
             sorts an array
-            can take (the self or) 
+            can take the self or 
             an optional parameter
         '''
+        # if no func parameter, take self.*
         if array == None:
             array = self.array
 
         #recursive method
         def sort_my_array(array):
 
+            '''
+                nested func so we do
+                not have to care about
+                self or optional parameter
+            '''
             if len(array) <= 1:
                 return array
             else:
@@ -41,8 +48,8 @@ class SearchSort:
                 else:
                     bigger.append(i)
             return sort_my_array(smaller) + [pivot] + sort_my_array(bigger)
-        so_list = sort_my_array(array)
-        return so_list
+
+        return sort_my_array(array)
 
     def binary_search_indexarray(self, array=None, target=None):
 
@@ -51,6 +58,10 @@ class SearchSort:
             needs sorted list
             returns falls if item not in list
         '''
+        if array == None:
+            array = self.array
+            target = self.targetnum
+
         start, end = 0,  (len(array)-1)
         found = False
         while start <= end and not found:
@@ -64,12 +75,16 @@ class SearchSort:
                 start = mid + 1
         return False
 
-    def hash_search_indexarray(self, array, target):
+    def hash_search_indexarray(self, array = None, target = None):
         
         ''' search in hashmap
             checks value for value
             returns false if item not in list
         '''
+        if array == None:
+            array = self.array
+            target = self.targetnum
+
         for _ in range(len(array)):
             for p, n in enumerate(array):
                 if n == target:
@@ -83,17 +98,24 @@ class SearchSort:
             one by one and returns postion
             if found, otherwise false
         '''
+        if array == None:
+            array = self.array
+            target = self.targetnum
 
         for pos in range(len(array)):
             if array[pos] == target:
                 return pos
         return False
-
-    def get_int_array(self, length):
+    
+    def get_int_array(self, length=100):
 
         ''' creates arrays with
             optional length and 
             random numbers
+            return also a random
+            choice of the created
+            list to test previous
+            methods
         '''
         rand_array = []
 
@@ -101,4 +123,6 @@ class SearchSort:
             n = random.randrange(length)
             rand_array.append(n)
 
-        return rand_array
+        include_num = random.choice(rand_array)
+
+        return rand_array, include_num

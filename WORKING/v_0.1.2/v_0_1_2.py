@@ -1,4 +1,4 @@
-class SearchSort:
+class SeaSor:
 
     '''
         Parent class for several
@@ -11,7 +11,6 @@ class SearchSort:
 
         self.array = array
         self.target = target
-
 
     def get_int_array(self, length=10, maxnum=10):
 
@@ -90,7 +89,78 @@ class SearchSort:
 
         return unique
 
-class Sort(SearchSort):
+# maybe solivng this mess with @classmethod ?!
+class WriteRead(SeaSor):
+
+    ''' 
+        ...later !!
+    '''
+
+    def __init__(self, array=None, target=None, sor_array=None, index=None):
+
+        super().__init__(array, target)
+        self._sor_array = sor_array
+        self._index = index
+
+    @property
+    def sor_array(self):
+        return self._sor_array
+
+    @sor_array.setter
+    def sor_array(self, sor_array):
+        self._sor_array = sor_array
+
+    @property
+    def index(self):
+        return self._index
+
+    @index.setter
+    def index(self, index):
+        self._index = index
+
+    def write_seasor(self):
+
+        ''' Writing results
+            to a txt file;
+        '''
+        with open('SearchSort.txt', 'a') as seso:
+            seso.write(f'''\n
+Array:          {self.array}
+Target:         {self.target}
+Index:          {self._index}
+Sorted Array:   {self._sor_array}
+        \n\n''')
+
+    def write_arr(self):
+
+        ''' This method appends
+            test arrays to
+            json stream;
+        '''
+        import json
+
+        with open('myLists.json', 'a') as ml:
+            json.dump(self.array[0], ml)
+            ml.write('\n')
+
+    def write_test(self):
+
+        ''' Appends list containing
+            random lists + randomly
+            chosen target to
+            myTests.json;
+        '''
+        import json
+
+        with open('myTests.json', 'a')as mt:
+            json.dump(self.array, ml)
+            ml.write('\n')
+
+    def read_seasor(self):
+        pass
+
+
+class Sort(SeaSor):
 
     '''
         Subclass of SearchSort;
@@ -98,7 +168,6 @@ class Sort(SearchSort):
 
     def __init(self, array=None, target=None):
         super().__init__(array, target)
-
 
     def bubble(self, array=None):
         ''' Uses bubble sort algorithm,

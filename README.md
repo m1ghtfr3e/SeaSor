@@ -17,3 +17,13 @@ or just download it via pip:   'pip install SeaSor'
 [SeaSor at Pypi](https://pypi.org/project/SeaSor/)
 
 </section>
+
+
+<section data-markdown>
+  
+  ##### How to use:
+  
+  *** Following ***
+  
+  
+</section>

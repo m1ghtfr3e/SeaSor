@@ -1,6 +1,4 @@
-import random
-
-class SearchSort:
+class SeaSor:
 
     '''
         Parent class for several
@@ -14,8 +12,10 @@ class SearchSort:
         self.array = array
         self.target = target
 
+    def get_int_array(self, length=10, maxnum=10):
 
-    def get_int_array(self, length=100, maxnum=10):
+        import random
+
         ''' Creates arrays with
             optional length and 
             random numbers;
@@ -34,18 +34,145 @@ class SearchSort:
 
         return rand_array, include_num
 
+    def get_ascii_array(self, length=10, charset='a'):
 
-class Sort(SearchSort):
+        ''' Method to create 
+            random ascii array;
+            Optional parameters,
+             second is for defining
+             kind of charset;
+            return list and 
+             chosen element;
+        '''
+
+        import random
+        import string
+
+        rand_array = []
+
+        if charset == 'll':        # 'll' for low letters
+            chars = string.ascii_lowercase
+
+        elif charset == 'ul':      # 'ul' for upper letters
+            chars = string.ascii_uppercase
+
+        elif charset == 'pt':      # 'pt' for punctuation
+            chars = string.punctuation
+
+        elif charset == 'pb':      # 'pb' for printable
+            chars = string.printable
+
+
+        for _ in range(length):
+            char = random.choice(chars)
+            rand_array.append(char)
+
+        include_elem = random.choice(rand_array)
+
+        return rand_array, include_elem
+
+    def rm_dupls(self, array=None):
+
+        ''' This method removes
+            duplicates from list;
+            returns a list without
+            duplicates;
+        '''
+
+        if array == None:
+            array = self.array
+
+        unique = []            # new list without dupl
+        for item in array:
+            if item not in unique:
+                unique.append(item)
+
+        return unique
+
+# maybe solivng this mess with @classmethod ?!
+class WriteRead(SeaSor):
+
+    ''' Writing and reading
+        lists and results to
+        a file;
+        Random lists are
+        dumped to json;
+    '''
+
+    def __init__(self, array=None, target=None, sor_array=None, index=None):
+
+        super().__init__(array, target)
+        self._sor_array = sor_array
+        self._index = index
+
+    @property
+    def sor_array(self):
+        return self._sor_array
+
+    @sor_array.setter
+    def sor_array(self, sor_array):
+        self._sor_array = sor_array
+
+    @property
+    def index(self):
+        return self._index
+
+    @index.setter
+    def index(self, index):
+        self._index = index
+
+    def write_seasor(self):
+
+        ''' Writing results
+            to a txt file;
+        '''
+        with open('SearchSort.txt', 'a') as seso:
+            seso.write(f'''\n
+Array:          {self.array}
+Target:         {self.target}
+Index:          {self._index}
+Sorted Array:   {self._sor_array}
+        \n\n''')
+
+    def write_arr(self):
+
+        ''' This method appends
+            test arrays to
+            json stream;
+        '''
+        import json
+
+        with open('myLists.json', 'a') as ml:
+            json.dump(self.array[0], ml)
+            ml.write('\n')
+
+    def write_test(self):
+
+        ''' Appends list containing
+            random lists + randomly
+            chosen target to
+            myTests.json;
+        '''
+        import json
+
+        with open('myTests.json', 'a')as mt:
+            json.dump(self.array, ml)
+            ml.write('\n')
+
+    def read_seasor(self):
+        pass
+
+
+class Sort(SeaSor):
 
     '''
         Subclass of SearchSort;
     '''
 
-    def __init(self, array=None, target=None):
+    def __init__(self, array=None, target=None):
         super().__init__(array, target)
 
-
-    def bubble_sort_array(self, array=None):
+    def bubble(self, array=None):
         ''' Uses bubble sort algorithm,
             not recommended, as the runtime
             is not good;
@@ -60,7 +187,7 @@ class Sort(SearchSort):
                     array[j], array[j+1] = array[j+1], array[j]
         return array
 
-    def quick_sort_array(self, array=None):
+    def quick(self, array=None):
         ''' Private class method;
             sorts an array;
             can take the self or 
@@ -94,7 +221,7 @@ class Sort(SearchSort):
 
         return sort_my_array(array)
 
-
+    
 class Search(Sort):
 
     '''
@@ -107,7 +234,7 @@ class Search(Sort):
     def __init__self(array=None, target=None):
         super().__init__(array, target)
 
-    def binary_search_indexarray(self, array=None, target=None):
+    def bin_index(self, array=None, target=None):
         ''' Binary search method;
             recursively;
             needs sorted list;
@@ -130,7 +257,7 @@ class Search(Sort):
                 start = mid + 1
         return False
 
-    def hash_search_indexarray(self, array = None, target = None):    
+    def hash_index(self, array = None, target = None):    
         ''' Search in hashmap;
             checks value for value;
             returns false if item not in list;
@@ -145,7 +272,7 @@ class Search(Sort):
                     return p
         return False
 
-    def linear_search_indexarray(self, array=None, target=None):
+    def lin_index(self, array=None, target=None):
         '''
             Iterates over positions
             one by one and returns postion

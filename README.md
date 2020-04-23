@@ -28,7 +28,7 @@ or just download it via pip:   'pip install SeaSor'
   
 ##### Another example of creating a random list
 ##### Two parameters are needed: 1. length of the array, 2. range of numbers
- ![](/_images/antoher_list.png)
+ ![](/_images/another_list.png)
  
  ... *More following*
   

@@ -21,9 +21,15 @@ or just download it via pip:   'pip install SeaSor'
 
 <section data-markdown>
   
-  ##### How to use:
+  ### How to use:
   
-  *** Following ***
+##### Import the module & example of creating a random list
+![](/_images/import_createArr.png)
   
+##### Another example of creating a random list
+##### Two parameters are needed: 1. length of the array, 2. range of numbers
+ ![](/_images/antoher_list.png)
+ 
+ ... *More following*
   
 </section>

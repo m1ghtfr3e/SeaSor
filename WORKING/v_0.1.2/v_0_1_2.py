@@ -166,7 +166,7 @@ class Sort(SeaSor):
         Subclass of SearchSort;
     '''
 
-    def __init(self, array=None, target=None):
+    def __init__(self, array=None, target=None):
         super().__init__(array, target)
 
     def bubble(self, array=None):

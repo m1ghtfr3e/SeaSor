@@ -1,5 +1,5 @@
 ---
-# SearchSort
+# SeaSor
 Search&amp;Sort Class
 
 I want to implement a collection of 

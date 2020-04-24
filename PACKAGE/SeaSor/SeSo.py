@@ -167,6 +167,9 @@ class Sort(SeaSor):
 
     '''
         Subclass of SearchSort;
+        inherits parameters of
+        parent class if no 
+        parameters are given;
     '''
 
     def __init__(self, array=None, target=None):
@@ -188,7 +191,7 @@ class Sort(SeaSor):
         return array
 
     def quick(self, array=None):
-        ''' Private class method;
+        ''' Quick sort method;
             sorts an array;
             can take the self or 
             an optional parameter;
@@ -221,6 +224,32 @@ class Sort(SeaSor):
 
         return sort_my_array(array)
 
+    def shell(self, array=None):
+
+        ''' Shell sort;
+            in place method
+            but not stable;
+        '''
+        if array == None:
+            array = self.array
+
+        n = len(array)
+        gap = n//2
+
+        while gap > 0:
+
+            for i in range(gap, n):
+                tmp = array[i]
+                j = i
+                
+                while j >= gap and array[j-gap] > tmp:
+                    array[j] = array[j-gap]
+                    j -= gap
+
+                array[j] = tmp
+            
+            gap //= 2
+        return array
     
 class Search(Sort):
 
@@ -228,7 +257,9 @@ class Search(Sort):
         Subclass of Sort;
         inherits from
         class Sort (so also
-        from class SearchSort);
+        from class SearchSort)
+        if no parameters are
+        passed;
     '''
 
     def __init__self(array=None, target=None):

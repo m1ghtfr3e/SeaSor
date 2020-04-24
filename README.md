@@ -23,12 +23,14 @@ or just download it via pip:   'pip install SeaSor'
   
   ### How to use:
   
-##### Import the module & example of creating a random list
-![](/_images/import_createArr.png)
+##### Import the moduleas
+![](/_images/from_import.png)
   
-##### Another example of creating a random list
-##### Two parameters are needed: 1. length of the array, 2. range of numbers
- ![](/_images/another_list.png)
+##### Example of how using a Sorting module (here: Quick Sort)
+ ![](/_images/Sort.png)
+ 
+##### Example of how using a Searching module (here: Binary Search) 
+![](/_images/Search.png)
  
  ... *More following*
   

@@ -4,7 +4,7 @@ with open('README.md', 'r') as fh:
     long_description = fh.read()
 
 setuptools.setup(name='SeaSor',
-        version='0.1.3.4',
+        version='0.1.3.5',
         description='Search & Sorting algorithms',
         url='https://github.com/m1ghtfr3e/SearchSort',
         author='m1ghtfr3e',

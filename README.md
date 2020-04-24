@@ -33,5 +33,11 @@ or just download it via pip:   'pip install SeaSor'
 ![](/_images/Search.png)
  
  ... *More following*
-  
+
+
+##### See more examples:
+![](/_images/exmpl1.png)
+![](/_images/exmpl2.png)
+![Example of how to use](/_images/seasor_useXMPL.png)
+
 </section>
